@@ -2,6 +2,7 @@ package com.example.bioproject.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,6 +23,12 @@ public class Screening {
 
     public Screening() {}
 
+    public Screening(Movie movie, Theater theater, LocalDateTime startTime) {
+        this.movie = movie;
+        this.theater = theater;
+        this.startTime = startTime;
+    }
+
     public Long getId() {
         return id;
     }
@@ -32,6 +39,10 @@ public class Screening {
 
     public Theater getTheater() {
         return theater;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     public LocalDateTime getStartTime() {

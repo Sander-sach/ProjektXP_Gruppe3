@@ -5,6 +5,25 @@
     <title>Title</title>
 </head>
 <body>
-<h1>BLABLABLABLABLA</h1></h>
+
+<section class="filter-nav">
+    <select name="genre">
+        <option th:each="genre : ${genre}"
+                th:value="${genre}"
+                th:text="${genre}">
+        </option>
+    </select>
+    <input type="date" id="date" name="date">
+    <input type="text" id="cast-search" name="cast-search">
+    <button type="button">Search</button>
+</section>
+
+<section class="movie-grid">
+    <div class="movie-card" th:each="movie : ${movie}">
+        <div class="movie-image"></div>
+        <h3 th:text="${movie.movieTitle}">Movie Title</h3>
+    </div>
+</section>
+
 </body>
 </html>
