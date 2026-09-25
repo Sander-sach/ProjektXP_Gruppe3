@@ -41,10 +41,6 @@ public class Screening {
         return theater;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
     public LocalDateTime getStartTime() {
         return startTime;
     }

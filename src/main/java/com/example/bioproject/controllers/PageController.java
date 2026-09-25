@@ -18,4 +18,9 @@ public class PageController {
         return "movie_overview";
     }
 
+    @GetMapping("/screening")
+    public String screeningDashboardPage() {
+        return "screening_dashboard";
+    }
+
 }

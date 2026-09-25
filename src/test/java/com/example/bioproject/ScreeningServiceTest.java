@@ -1,6 +1,8 @@
 package com.example.bioproject;
 
 import com.example.bioproject.entities.Screening;
+import com.example.bioproject.repositories.ScreeningRepository;
+import com.example.bioproject.services.ScreeningService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +20,8 @@ public class ScreeningServiceTest {
 
     //Unneccesary data can be null because it isnt persisting to the database
 
-    //Selected date has screenings -> include
-    //Other dates also have screenings -> dont include them
+    //Make sure only screenings for given date are returned ->
+    //Make sure all screenings are stored in the list ->
     //Selected date has no screenings -> return an empty list
 
     private ScreeningRepository screeningRepository;

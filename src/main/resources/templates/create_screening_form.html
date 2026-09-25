@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form th:action="@{/screenings/create}" method="post">
+
+    <section class="form">
+
+        <!-- Movie selection -->
+        <label for="movieSelect">Movie</label>
+
+        <select id="movieSelect" name="movieId" required>
+            <option value="">Select a movie</option>
+
+            <option th:each="movie : ${movies}"
+                    th:value="${movie.id}"
+                    th:text="${movie.movieTitle}">
+            </option>
+        </select>
+
+
+        <!-- Theater selection -->
+        <label for="theaterSelect">Theater</label>
+
+        <select id="theaterSelect" name="theaterId" required>
+            <option value="">Select a theater</option>
+
+            <option th:each="theater : ${theaters}"
+                    th:value="${theater.id}"
+                    th:text="${theater.name}">
+            </option>
+        </select>
+
+
+        <!-- Date and time selection -->
+        <label for="startTime">Date and time</label>
+
+        <input type="datetime-local"
+               id="startTime"
+               name="startTime"
+               required>
+
+
+        <button type="submit">Create screening</button>
+
+    </section>
+
+</form>
+
+
+</body>
+</html>
