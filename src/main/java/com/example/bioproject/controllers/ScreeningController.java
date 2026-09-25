@@ -1,9 +1,16 @@
 package com.example.bioproject.controllers;
 
+import com.example.bioproject.services.MovieService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 public class ScreeningController {
+
+    private final MovieService movieService;
+
+    public ScreeningController(MovieService movieService) {
+        this.movieService = movieService;
+    }
 
     @GetMapping("/screening/create-form")
     public String createScreening(Model model) {
