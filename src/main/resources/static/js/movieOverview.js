@@ -134,6 +134,11 @@ document.getElementById("castSearch")
 document.getElementById("date")
     .addEventListener("change", filterMovies)
 
+document.getElementById("login-btn")
+    .addEventListener("click", () => {
+        window.location.href = "../login.html";
+    });
+
 
 
 // Load initial data
