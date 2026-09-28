@@ -1,4 +1,4 @@
-package com.example.bioproject.Config;
+package com.example.bioproject.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;

@@ -21,13 +21,9 @@ public class EmployeeService {
     }
 
     public boolean createEmployee(EmployeeAccountCredentials credentials){
-        String hashedPassword;
-        hashedPassword = hashPassword(credentials.password());
+        String hashedPassword = hashPassword(credentials.password());
 
-        if(!employeeRepository.existsByUserName(credentials.userName())){
-            return false;
-        }
-        if(!validatePasswordCharacteres(credentials.password())){
+        if(!employeeRepository.existsByUserName(credentials.userName()) || !validatePasswordCharacteres(credentials.password()) ){
             return false;
         }
         Employee newEmployee = new Employee(
@@ -47,16 +43,18 @@ public class EmployeeService {
     }
 
     public String hashPassword(String plainPassword){
-        String hashedPassword = passwordEncoder.encode(plainPassword);
-        return hashedPassword;
+        return passwordEncoder.encode(plainPassword);
     }
 
     public boolean validateLoginPassword(String plainPassword,String hashedPassword){
         return passwordEncoder.matches(plainPassword,hashedPassword);
     }
 
-    /*public Employee validateLoginCredentials(LoginCredentials credentials){
-        Employee employee = employeeRepository.findEmployeeByUserName(credentials.userName())
-
-    }*/
+    public Employee validateLoginCredentials(LoginCredentials credentials){
+        Employee employee = employeeRepository.findEmployeeByUserName(credentials.userName());
+        if(!validateLoginPassword(credentials.password(), employee.getPassword())){
+            return null;
+        }
+        return employee;
+    }
 }
