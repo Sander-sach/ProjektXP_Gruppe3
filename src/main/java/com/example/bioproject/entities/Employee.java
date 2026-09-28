@@ -22,6 +22,12 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(String userName, String password, EmployeeRole role) {
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+    }
+
     public Long getUserID() {
         return userId;
     }
