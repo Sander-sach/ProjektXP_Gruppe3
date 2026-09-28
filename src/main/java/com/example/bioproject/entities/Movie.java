@@ -22,7 +22,7 @@ public class Movie {
     @Enumerated(EnumType.STRING)
     private AgeLimitEnum ageLimit;
     //private List cast; //Need to figure out how to handle cast while using 3NF
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private int duration; //In minutes
 
     public Movie() {}

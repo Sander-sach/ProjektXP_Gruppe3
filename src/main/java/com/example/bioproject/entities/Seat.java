@@ -23,7 +23,7 @@ public class Seat {
         return id;
     }
 
-    public char getRow() {
+    public char getRowLabel() {
         return rowLabel;
     }
 
