@@ -1,4 +1,9 @@
 package com.example.bioproject.dtos;
 
-public record GetEmployeeResponse(String userName, ) {
+import com.example.bioproject.enums.EmployeeRole;
+
+public record GetEmployeeResponse(String userName,
+                                  String password,
+                                  EmployeeRole role,
+                                  Long userId) {
 }
