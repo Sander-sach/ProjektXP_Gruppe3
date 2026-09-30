@@ -3,8 +3,11 @@ package com.example.bioproject.restcontrollers;
 
 import com.example.bioproject.dtos.EmployeeAccountCredentials;
 import com.example.bioproject.dtos.LoginCredentials;
+import com.example.bioproject.dtos.LoginResponse;
 import com.example.bioproject.entities.Employee;
 import com.example.bioproject.services.EmployeeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,18 +20,21 @@ public class EmployeeController {
     }
 
     @PostMapping("/create-employee")
-    public boolean createEmployee(@RequestBody EmployeeAccountCredentials credentials){
-        return employeeService.createEmployee(credentials);
+    public ResponseEntity<Boolean> createEmployee(@RequestBody EmployeeAccountCredentials credentials){
+        Boolean response = employeeService.createEmployee(credentials);
+        if(!response){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/login-request")
-    public Employee loginRequest(@RequestBody LoginCredentials credentials){
-        return employeeService.validateLoginCredentials(credentials);
+    @PostMapping("/login-request")
+    public ResponseEntity<LoginResponse> loginRequest(@RequestBody LoginCredentials credentials){
+        LoginResponse response = employeeService.validateLoginCredentials(credentials);
+            if(response == null){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+           return ResponseEntity.ok(response);
     }
-
-    /*@GetMapping("/get-employee")
-    public EmployeeAccountCredentials GetEmployee(@RequestBody LoginCredentials credentials){
-        return
-    }*/
 
 }

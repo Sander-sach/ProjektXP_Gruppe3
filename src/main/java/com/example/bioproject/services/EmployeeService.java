@@ -2,6 +2,7 @@ package com.example.bioproject.services;
 
 import com.example.bioproject.dtos.EmployeeAccountCredentials;
 import com.example.bioproject.dtos.LoginCredentials;
+import com.example.bioproject.dtos.LoginResponse;
 import com.example.bioproject.entities.Employee;
 import com.example.bioproject.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,11 +51,14 @@ public class EmployeeService {
         return passwordEncoder.matches(plainPassword,hashedPassword);
     }
 
-    public Employee validateLoginCredentials(LoginCredentials credentials){
+    public LoginResponse validateLoginCredentials(LoginCredentials credentials){
         Employee employee = employeeRepository.findEmployeeByUserName(credentials.userName());
         if(!validateLoginPassword(credentials.password(), employee.getPassword())){
             return null;
         }
-        return employee;
+        return new LoginResponse(
+                employee.getUserName(),
+                employee.getPassword(),
+                employee.getRole());
     }
 }
