@@ -2,60 +2,27 @@
 let allMovies = [];
 let allScreenings = [];
 
+// EventListeners - Automatically update when filters change
+document.getElementById("genreSelect")
+    .addEventListener("change", filterMovies);
+
+document.getElementById("castSearch")
+    .addEventListener("input", filterMovies);
+
+document.getElementById("date")
+    .addEventListener("change", filterMovies)
+
+document.getElementById("login-btn")
+    .addEventListener("click", () => {
+        window.location.href = "../login.html";
+    });
+
+initializePage();
+
+
 //Filtering by date becomes different to the movie filtering,
 // because it needs to filter the screenings and not the movies,
 // and if there are multiple criteria, then filter screenings in relation to the movies
-
-// Fetch all movies from the API
-async function loadMovies() {
-
-    const response = await fetch("/api/movies");
-
-    if (!response.ok) {
-        throw new Error("Failed to load movies");
-    }
-
-    allMovies = await response.json();
-
-}
-
-async function loadScreenings() {
-
-    const response = await fetch("/api/screenings");
-
-    if (!response.ok) {
-        throw new Error("Failed to load Screenings");
-    }
-
-    allScreenings = await response.json();
-
-}
-
-
-// Fetch all available genres
-async function loadGenres() {
-
-    const response = await fetch("/api/genres");
-
-    if (!response.ok) {
-        throw new Error("Failed to load genres");
-    }
-
-    const genres = await response.json();
-
-    const genreSelect = document.getElementById("genreSelect");
-
-    genres.forEach(genre => {
-
-        const option = document.createElement("option");
-
-        option.value = genre;
-        option.textContent = genre;
-
-        genreSelect.appendChild(option);
-    });
-}
-
 
 // Filter movies based on selected filters
 function filterMovies() {
@@ -118,27 +85,19 @@ function displayMovies(movies) {
         card.appendChild(image);
         card.appendChild(title);
 
+        card.addEventListener("click", () => {
+
+            const movieScreening = allScreenings.filter(screening => screening.movie.id === movie.id);
+
+            sessionStorage.setItem("movieScreenings", JSON.stringify(movieScreening));
+
+            window.location.href = "screenings_for_movie.html?id=" + movie.id;
+
+        });
+
         movieGrid.appendChild(card);
     });
 }
-
-
-
-// EventListeners - Automatically update when filters change
-document.getElementById("genreSelect")
-    .addEventListener("change", filterMovies);
-
-document.getElementById("castSearch")
-    .addEventListener("input", filterMovies);
-
-document.getElementById("date")
-    .addEventListener("change", filterMovies)
-
-document.getElementById("login-btn")
-    .addEventListener("click", () => {
-        window.location.href = "../login.html";
-    });
-
 
 
 // Load initial data
@@ -160,4 +119,51 @@ async function initializePage() {
     }
 }
 
-initializePage();
+// Fetch all movies from the API
+async function loadMovies() {
+
+    const response = await fetch("/api/movies");
+
+    if (!response.ok) {
+        throw new Error("Failed to load movies");
+    }
+
+    allMovies = await response.json();
+
+}
+
+async function loadScreenings() {
+
+    const response = await fetch("/api/screenings");
+
+    if (!response.ok) {
+        throw new Error("Failed to load Screenings");
+    }
+
+    allScreenings = await response.json();
+
+}
+
+// Fetch all available genres
+async function loadGenres() {
+
+    const response = await fetch("/api/genres");
+
+    if (!response.ok) {
+        throw new Error("Failed to load genres");
+    }
+
+    const genres = await response.json();
+
+    const genreSelect = document.getElementById("genreSelect");
+
+    genres.forEach(genre => {
+
+        const option = document.createElement("option");
+
+        option.value = genre;
+        option.textContent = genre;
+
+        genreSelect.appendChild(option);
+    });
+}
