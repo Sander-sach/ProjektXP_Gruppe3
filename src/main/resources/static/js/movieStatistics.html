@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Statistics</title>
+  <link rel="stylesheet" href="/css/movieStatistics.css">
+</head>
+<body>
+
+<a href="/screening_dashboard.html" class="back-link">&larr; Back to screening dashboard</a>
+
+<h1>Movie Statistics</h1>
+<p class="description">
+  Occupancy = tickets sold / seats in all the movie's screenings.
+  Movies with the lowest occupancy are shown first.
+</p>
+
+<section class="legend">
+  <p><span class="status-low">Low</span> under 30 % &ndash; consider removing the movie</p>
+  <p><span class="status-high">High</span> 70 % or more &ndash; consider extra screenings</p>
+</section>
+
+<table class="statistics-table">
+  <thead>
+  <tr>
+    <th>Movie</th>
+    <th>Screenings</th>
+    <th>Tickets sold</th>
+    <th>Occupancy</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody id="statisticsBody">
+  </tbody>
+</table>
+
+<script src="/js/movieStatistics.js"></script>
+
+</body>
+</html>
