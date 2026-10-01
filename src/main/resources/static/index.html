@@ -1,15 +1,51 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<a href="/movie_overview.html">
-    <button type="button">Movie Overview</button>
-</a>
-<a href="/screening_dashboard.html">
-    <button type="button">screening Dashboard</button>
-</a>
+<button type="button" onclick="location.href='/movie_overview.html'">Movie Overview</button>
+<button type="button" onclick="location.href='/screening_dashboard.html'">Movie Overview</button>
 
+    <div style="text-align: center; margin-top: 1rem;">
+        <button id="registerBtn">Opret ny Bruger</button>
+        <dialog id="registerDialog">
+            <form method="dialog" id="register">
+                <h2>Bruger oprettelse</h2>
+                <label for="registerUserName">Brugernavn</label>
+                <input type="text" id="registerUserName" name="registerUserName" required>
+                <label for="registerPassword">Adgangskode</label>
+                <input type="password" id="registerPassword" name="registerPassword" required>
+                <label for="role">Medarbejder rolle </label>
+                <select id="role" name="role" required>
+                    <option value="">Vælge en rolle</option>
+                    <option value="FILMOPERATOER">Filmoperatør</option>
+                    <option value="SALG_RESEVATION">Salg og Resevation</option>
+                </select>
+                <menu>
+                    <button type="sumbit" formmethod="dialog" formnovalidate>Annuller</button>
+                    <button type="submit">Register</button>
+                </menu>
+            </form>
+        </dialog>
+    </div>
+    <div style="text-align: center; margin-top: 1rem;">
+        <button id="loginBtn">Login</button>
+        <dialog id="loginDialog">
+            <form method="dialog" id="login">
+                <h2>Login</h2>
+                <label for="loginUserName">Brugernavn</label>
+                <input type="text" id="loginUserName" name="loginUserName" required>
+                <label for="loginPassword">Adgangskode</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+                <menu>
+                    <button type="submit" formmethod="dialog" formnovalidate>Annuller</button>
+                    <button type="submit">Register</button>
+                </menu>
+            </form>
+        </dialog>
+    </div>
+<script src="/js/index.js"></script>
 </body>
 </html>

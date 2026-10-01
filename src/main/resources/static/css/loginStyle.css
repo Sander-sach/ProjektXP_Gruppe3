@@ -25,7 +25,7 @@ body {
     min-height: 100vh;
 }
 
-/* ── Split layout (login page) ── */
+/* ── Split layout (index page) ── */
 .split-layout {
     display: flex;
     min-height: 100vh;
