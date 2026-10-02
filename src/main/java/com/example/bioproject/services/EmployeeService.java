@@ -22,11 +22,12 @@ public class EmployeeService {
     }
 
     public boolean createEmployee(EmployeeAccountCredentials credentials){
-        String hashedPassword = hashPassword(credentials.password());
 
-        if(!employeeRepository.existsByUserName(credentials.userName()) || !validatePasswordCharacteres(credentials.password()) ){
+        if(employeeRepository.existsByUserName(credentials.userName()) || !validatePasswordCharacteres(credentials.password()) ){
             return false;
         }
+
+        String hashedPassword = hashPassword(credentials.password());
         Employee newEmployee = new Employee(
                 credentials.userName(),
                 hashedPassword,
