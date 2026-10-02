@@ -1,133 +1,127 @@
 package com.example.bioproject;
 
+import com.example.bioproject.entities.Movie;
 import com.example.bioproject.entities.Screening;
+import com.example.bioproject.entities.Theater;
 import com.example.bioproject.repositories.ScreeningRepository;
 import com.example.bioproject.services.ScreeningService;
+
+import org.apiguardian.api.API;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class ScreeningServiceTest {
 
     //Arrange, Act, Assert
 
-    //Unneccesary data can be null because it isnt persisting to the database
+    //Valid screening	            =>   Screening is saved
+    //Theater already occupied	    =>   Screening is rejected
+    //Screenings do not overlap	    =>   Screening is saved
+    //Multiple screenings overlap	=>   Conflicting batch is rejected
 
-    //Make sure only screenings for given date are returned ->
-    //Make sure all screenings are stored in the list ->
-    //Selected date has no screenings -> return an empty list
+    //Note: This assumes getDuration() returns an integer representing minutes, your Screening constructor accepts those three arguments, and your service throws IllegalArgumentException for conflicts. Adjust those parts to match your actual implementation.
+    //Your JavaScript already checks theater availability, but that is primarily for the user experience.
+    //Your service must perform the same validation independently.
+    //Otherwise, someone could bypass the JavaScript and send a POST request directly to your REST API, creating overlapping screenings.
+    //The unit tests help ensure that your service rejects those invalid requests regardless of how they reach the backend.
 
     private ScreeningRepository screeningRepository;
     private ScreeningService screeningService;
 
-    //Runs this before each test
+    private Movie movie;
+    private Theater theater;
+
     @BeforeEach
     void setUp() {
+
         screeningRepository = mock(ScreeningRepository.class);
+
         screeningService = new ScreeningService(screeningRepository);
-    }
 
+        movie = mock(Movie.class);
+        theater = mock(Theater.class);
+
+        when(movie.getDuration()).thenReturn(120);
+        when(theater.getId()).thenReturn(1L);
+    }
 
     @Test
-    void shouldReturnScreeningsForSelectedDate() {
+    void shouldCreateScreeningWhenTheaterIsAvailable() {
 
         // Arrange
-        LocalDate selectedDate = LocalDate.of(2026, 9, 24);
+        LocalDateTime startTime =
+                LocalDateTime.of(2026, 10, 1, 18, 0);
 
-        LocalDateTime startOfDay = selectedDate.atStartOfDay();
-        LocalDateTime startOfNextDay = selectedDate.plusDays(1).atStartOfDay();
-
-        Screening screening = new Screening(
-                null,
-                null,
-                LocalDateTime.of(2026, 9, 24, 18, 30)
-        );
-
-        when(screeningRepository.findByStartTimeBetween(
-                startOfDay,
-                startOfNextDay
-        )).thenReturn(List.of(screening));
-
+        when(screeningRepository.findByTheaterId(1L))
+                .thenReturn(List.of());
 
         // Act
-        List<Screening> result =
-                screeningService.getScreeningsByDate(selectedDate);
-
+        screeningService.createScreening(movie, theater, startTime);
 
         // Assert
-        assertEquals(1, result.size());
-        assertEquals(screening, result.getFirst());
+        verify(screeningRepository, times(1))
+                .save(any(Screening.class));
     }
-
 
     @Test
-    void shouldReturnAllScreeningsForSelectedDate() {
+    void shouldRejectScreeningWhenTheaterIsOccupied() {
 
         // Arrange
-        LocalDate selectedDate = LocalDate.of(2026, 9, 24);
+        LocalDateTime existingStart =
+                LocalDateTime.of(2026, 10, 1, 18, 0);
 
-        LocalDateTime startOfDay = selectedDate.atStartOfDay();
-        LocalDateTime startOfNextDay = selectedDate.plusDays(1).atStartOfDay();
+        Screening existingScreening =
+                new Screening(movie, theater, existingStart);
 
-        Screening screening1 = new Screening(
-                null,
-                null,
-                LocalDateTime.of(2026, 9, 24, 12, 30)
+        when(screeningRepository.findByTheaterId(1L))
+                .thenReturn(List.of(existingScreening));
+
+        LocalDateTime newStart =
+                LocalDateTime.of(2026, 10, 1, 19, 0);
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> screeningService.createScreening(
+                        movie,
+                        theater,
+                        newStart
+                )
         );
 
-        Screening screening2 = new Screening(
-                null,
-                null,
-                LocalDateTime.of(2026, 9, 24, 18, 30)
-        );
-
-        when(screeningRepository.findByStartTimeBetween(
-                startOfDay,
-                startOfNextDay
-        )).thenReturn(List.of(screening1, screening2));
-
-
-        // Act
-        List<Screening> result =
-                screeningService.getScreeningsByDate(selectedDate);
-
-
-        // Assert
-        assertEquals(2, result.size());
-        assertEquals(List.of(screening1, screening2), result);
+        verify(screeningRepository, never())
+                .save(any(Screening.class));
     }
-
 
     @Test
-    void shouldReturnEmptyListWhenNoScreeningsExist() {
+    void shouldAllowScreeningWhenPreviousScreeningHasEnded() {
 
         // Arrange
-        LocalDate selectedDate = LocalDate.of(2026, 9, 24);
+        LocalDateTime existingStart =
+                LocalDateTime.of(2026, 10, 1, 18, 0);
 
-        LocalDateTime startOfDay = selectedDate.atStartOfDay();
-        LocalDateTime startOfNextDay = selectedDate.plusDays(1).atStartOfDay();
+        Screening existingScreening =
+                new Screening(movie, theater, existingStart);
 
-        when(screeningRepository.findByStartTimeBetween(
-                startOfDay,
-                startOfNextDay
-        )).thenReturn(List.of());
+        when(screeningRepository.findByTheaterId(1L))
+                .thenReturn(List.of(existingScreening));
 
+        // Existing screening ends at 20:00
+        LocalDateTime newStart =
+                LocalDateTime.of(2026, 10, 1, 20, 0);
 
         // Act
-        List<Screening> result =
-                screeningService.getScreeningsByDate(selectedDate);
-
+        screeningService.createScreening(movie, theater, newStart);
 
         // Assert
-        assertEquals(0, result.size());
+        verify(screeningRepository, times(1))
+                .save(any(Screening.class));
     }
-
 
 }

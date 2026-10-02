@@ -5,6 +5,7 @@ import com.example.bioproject.repositories.MovieRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -18,6 +19,8 @@ public class MovieService {
     public List<Movie> findAllMovies(){
         return movieRepo.findAll();
     }
+
+    public Optional<Movie> getMovieById(Long id) {return movieRepo.findById(id);}
 
     //Removes the movie from the program without deleting it, so the statistics are kept
     public boolean removeMovie(Long id) {
