@@ -20,4 +20,9 @@ public class MovieController {
     public List<Movie> getAllMovies() {
         return movieService.findAllMovies();
     }
+
+    @DeleteMapping("/movies/{id}")
+    public boolean removeMovie(@PathVariable("id") Long id) {
+        return movieService.removeMovie(id);
+    }
 }

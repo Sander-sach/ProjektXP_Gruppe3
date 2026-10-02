@@ -3,6 +3,7 @@ package com.example.bioproject.entities;
 import com.example.bioproject.enums.AgeLimitEnum;
 import com.example.bioproject.enums.GenreEnum;
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 public class Movie {
@@ -24,6 +25,9 @@ public class Movie {
     //private List cast; //Need to figure out how to handle cast while using 3NF
     @Column(nullable = false)
     private int duration; //In minutes
+    @Column(nullable = false)
+    @ColumnDefault("true")
+    private boolean active = true; //false = removed from the program
 
     public Movie() {}
 
@@ -49,5 +53,13 @@ public class Movie {
 
     public int getDuration() {
         return duration;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
