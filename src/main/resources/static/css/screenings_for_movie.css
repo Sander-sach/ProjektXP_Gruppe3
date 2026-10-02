@@ -1,0 +1,26 @@
+.screening-card {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.screening-date {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.screening-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.screening-time {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.screening-theater {
+    font-size: 16px;
+}
