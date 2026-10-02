@@ -1,56 +1,32 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create Screenings</title>
+    <link rel="stylesheet" href="/css/create-screening.css">
+    <script src="/js/create-screening.js" defer></script>
 </head>
+
 <body>
 
+<section class="input-section">
 
-<form th:action="@{/screenings/create}" method="post">
-
-    <section class="form">
-
-        <!-- Movie selection -->
-        <label for="movieSelect">Movie</label>
-
-        <select id="movieSelect" name="movieId" required>
-            <option value="">Select a movie</option>
-
-            <option th:each="movie : ${movies}"
-                    th:value="${movie.id}"
-                    th:text="${movie.movieTitle}">
-            </option>
+    <div id="basicInput">
+        <select id="movieSelection">
+            <option value="">Movie Selection</option>
         </select>
+    </div>
 
+    <div id="screeningsContainer">
+        <!-- JavaScript creates HTML -->
+    </div>
 
-        <!-- Theater selection -->
-        <label for="theaterSelect">Theater</label>
+    <div id="btn-section">
+        <button type="button" id="resetBtn">Reset</button>
+        <button type="button" id="addBtn">Save Screenings</button>
+    </div>
 
-        <select id="theaterSelect" name="theaterId" required>
-            <option value="">Select a theater</option>
-
-            <option th:each="theater : ${theaters}"
-                    th:value="${theater.id}"
-                    th:text="${theater.name}">
-            </option>
-        </select>
-
-
-        <!-- Date and time selection -->
-        <label for="startTime">Date and time</label>
-
-        <input type="datetime-local"
-               id="startTime"
-               name="startTime"
-               required>
-
-
-        <button type="submit">Create screening</button>
-
-    </section>
-
-</form>
-
+</section>
 
 </body>
 </html>
