@@ -1,4 +1,3 @@
-
 -- =========================================
 -- BIOPROJECT - SEED DATA
 -- =========================================
@@ -145,3 +144,51 @@ VALUES
 (6, 2, '2026-10-01 15:30:00'),
 (5, 1, '2026-10-01 18:00:00'),
 (7, 2, '2026-10-01 19:00:00');
+
+
+-- =========================================
+-- RESERVATIONS
+-- screening_id follows the order of the screenings above
+-- =========================================
+
+INSERT INTO reservation
+(screening_id, customer_name, customer_mobile, number_of_people)
+VALUES
+
+-- Interstellar
+(1, 'Anders Jensen', '20123456', 30),
+(9, 'Mette Hansen', '21234567', 34),
+(17, 'Lars Nielsen', '22345678', 30),
+(25, 'Hans Berg', '40123456', 30),
+
+-- The Dark Knight
+(2, 'Sofie Larsen', '23456789', 26),
+(11, 'Peter Madsen', '24567890', 28),
+(19, 'Camilla Olsen', '25678901', 30),
+(27, 'Maja Lund', '41234567', 30),
+
+-- Inception
+(3, 'Jonas Petersen', '26789012', 10),
+(10, 'Ida Kristensen', '27890123', 8),
+(18, 'Mads Rasmussen', '28901234', 12),
+
+-- The Conjuring
+(4, 'Emma Poulsen', '29012345', 6),
+(12, 'Oliver Thomsen', '30123456', 9),
+(20, 'Freja Christiansen', '31234567', 11),
+
+-- The Shawshank Redemption
+(5, 'William Andersen', '32345678', 7),
+(14, 'Clara Johansen', '33456789', 5),
+
+-- The Matrix
+(6, 'Noah Mortensen', '34567890', 13),
+(13, 'Laura Møller', '35678901', 10),
+
+-- Toy Story
+(7, 'Victor Jørgensen', '36789012', 2),
+(15, 'Alma Knudsen', '37890123', 3),
+
+-- The Hangover
+(8, 'Karl Pedersen', '38901234', 1),
+(16, 'Ella Holm', '39012345', 2);
