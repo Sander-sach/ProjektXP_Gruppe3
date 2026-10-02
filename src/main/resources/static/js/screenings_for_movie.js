@@ -12,20 +12,56 @@ displayScreenings(screenings);
 
 function displayScreenings(screenings) {
 
+    console.log(screenings);
+
+    const title = document.getElementById("movieTitle");
+    title.innerText = screenings[0].movie.movieTitle;
+
+    const description = document.getElementById("movieDescription");
+    description.innerText = screenings[0].movie.description;
+
     const container = document.getElementById("screenings");
 
     container.innerHTML = "";
 
     screenings.forEach(screening => {
 
-        console.log(screening);
+        const screeningCard = document.createElement("div");
+        screeningCard.classList.add("screening-card");
 
-        const screeningElement = document.createElement("div");
+        const date = document.createElement("div");
+        date.classList.add("screening-date");
 
-        screeningElement.textContent =
-            screening.startTime;
+        const time = document.createElement("div");
+        time.classList.add("screening-time");
 
-        container.appendChild(screeningElement);
+        const theater = document.createElement("div");
+        theater.classList.add("screening-theater");
+
+        const startTime = new Date(screening.startTime);
+
+        //formats Date
+        date.textContent = startTime.toLocaleDateString("en-GB", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+
+        //formats Time
+        time.textContent = startTime.toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+        theater.textContent = screening.theater.name;
+
+        screeningCard.appendChild(date);
+        screeningCard.appendChild(time);
+        screeningCard.appendChild(theater);
+
+        container.appendChild(screeningCard);
+
     });
 }
 
