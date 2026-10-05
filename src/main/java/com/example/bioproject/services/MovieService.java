@@ -36,8 +36,10 @@ public class MovieService {
         //alle de oplysninger der kan ændres
         return movieRepo.save(existingMovie); //gemmer ændringerne i databasen.
     }
-  public void deleteMovie(Long id) {
-      movieRepo.deleteById(id); //finder id, på den film der skal slettes.
+  public boolean deleteMovie(Long id) {
+
+        movieRepo.deleteById(id); //finder id, på den film der skal slettes.
+        return true;
   }
     public Optional<Movie> getMovieById(Long id) {return movieRepo.findById(id);}
 
