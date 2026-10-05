@@ -19,7 +19,26 @@ public class MovieService {
     public List<Movie> findAllMovies(){
         return movieRepo.findAll();
     }
+    public Movie createMovie(Movie movie){
+        return movieRepo.save(movie);//Gemmer den nye film, i vores database.
 
+    }
+    public Movie updateMovie(Long id, Movie movie){
+        //finder den film, vi vil ændre.
+        Movie existingMovie = movieRepo.findById(id)
+                .orElseThrow();
+        existingMovie.setMovieTitle(movie.getMovieTitle());
+        existingMovie.setDescription(movie.getDescription());
+        existingMovie.setGenre(movie.getGenre());
+        existingMovie.setAgeLimit(movie.getAgeLimit());
+        existingMovie.setDuration(movie.getDuration());
+
+        //alle de oplysninger der kan ændres
+        return movieRepo.save(existingMovie); //gemmer ændringerne i databasen.
+    }
+  public void deleteMovie(Long id) {
+      movieRepo.deleteById(id); //finder id, på den film der skal slettes.
+  }
     public Optional<Movie> getMovieById(Long id) {return movieRepo.findById(id);}
 
     //Removes the movie from the program without deleting it, so the statistics are kept

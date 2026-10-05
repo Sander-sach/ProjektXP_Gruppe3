@@ -15,14 +15,18 @@ public class MovieController {
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
-
+    //Henter alle film
     @GetMapping("/movies")
     public List<Movie> getAllMovies() {
         return movieService.findAllMovies();
     }
-
+    //Opret film
+    @PostMapping
+    public Movie createMovie(@RequestBody Movie movie){
+        return movieService.createMovie(movie);
+    }
     @DeleteMapping("/movies/{id}")
-    public boolean removeMovie(@PathVariable("id") Long id) {
-        return movieService.removeMovie(id);
+    public boolean deleteMovie(@PathVariable Long id){
+        return movieService.deleteMovie(id);
     }
 }
