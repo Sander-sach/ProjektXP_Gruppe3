@@ -15,9 +15,18 @@ public class MovieController {
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
-
+    //Henter alle film
     @GetMapping("/movies")
     public List<Movie> getAllMovies() {
         return movieService.findAllMovies();
+    }
+    //Opret film
+    @PostMapping
+    public Movie createMovie(@RequestBody Movie movie){
+        return movieService.createMovie(movie);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteMovie(@PathVariable Long id){
+        movieService.deleteMovie(id);
     }
 }
