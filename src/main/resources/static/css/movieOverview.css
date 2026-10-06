@@ -67,4 +67,26 @@ body {
     padding: 15px;
     margin: 0;
     font-size: 16px;
+
+    /* Tilbage knap */
+
+    .back-link {
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #444;
+        background-color: #202936;
+        color: lightgray;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-flex;
+        margin-bottom: 30px;
+
+        transition: transform 0.2s ease,
+        background-color 0.2s ease;
+    }
+
+    .back-link:hover {
+        transform: scale(1.1);
+        background-color: #323B48;
+    }
 }
