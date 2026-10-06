@@ -11,11 +11,13 @@ async function loadData() {
             fetch("/api/screenings")
         ]);
 
+
     if (!movieResponse.ok || !theaterResponse.ok || !screeningResponse.ok) {
         throw new Error("Failed to load screening data");
     }
 
     allMovies = await movieResponse.json();
+    console.log(allMovies);
     allTheaters = await theaterResponse.json();
     allScreenings = await screeningResponse.json();
 }
@@ -74,7 +76,7 @@ function addScreeningSection() {
     const theaterSelect = section.querySelector(".screening-theater")
 
     dateInput.addEventListener("change", () => {
-        updateAvailableTheater(section);
+        updateAvailableTheaters(section);
     });
 
     theaterSelect.addEventListener("change", () => {
@@ -94,7 +96,7 @@ function handleScreeningCompleted(section) {
 
     const date = section.querySelector(".screening-date").value;
 
-    const theater = section.querySelector(".screening-theator").value;
+    const theater = section.querySelector(".screening-theater").value;
 
     if (date === "" || theater === "") {
         return;
@@ -227,11 +229,11 @@ function updateAvailableTheaters(section) {
         document.getElementById("movieSelection").value;
 
     if (!date || !movieId) {
-        theaterSelect.disable = true;
+        theaterSelect.disabled = true;
         return;
     }
 
-    theaterSelect.disable = false;
+    theaterSelect.disabled = false;
 
     allTheaters.forEach(theater => {
 
