@@ -34,49 +34,48 @@ public class Movie {
 
     public Movie() {}
 
-   public Long getId() {
+    public Long getId() {
     return id;
 }
 
-public String getMovieTitle() {
-    return movieTitle;
-}
+    public String getMovieTitle() {
+        return movieTitle;
+    }
 
-public String getDescription() {
-    return description;
-}
+    public String getDescription() {
+        return description;
+    }
 
-public GenreEnum getGenre() {
-    return genre;
-}
+    public GenreEnum getGenre() {
+        return genre;
+    }
 
-public AgeLimitEnum getAgeLimit() {
-    return ageLimit;
-}
+    public AgeLimitEnum getAgeLimit() {
+        return ageLimit;
+    }
 
-public int getDuration() {
-    return duration;
-}
-public void setMovieTitle(String movieTitle){
-        this.movieTitle=movieTitle;
-}
-public void setDescription(String description){
-        this.description=description;
-}
-public void setGenre(GenreEnum genre){
-        this.genre=genre;
-}
-public void setAgeLimit(AgeLimitEnum ageLimit){
-        this.ageLimit=ageLimit;
-}
-public void setDuration(int duration){
+    public int getDuration() {
+        return duration;
+    }
+    public void setMovieTitle(String movieTitle){
+            this.movieTitle=movieTitle;
+    }
+    public void setDescription(String description){
+            this.description=description;
+    }
+    public void setGenre(GenreEnum genre){
+            this.genre=genre;
+    }
+    public void setAgeLimit(AgeLimitEnum ageLimit){
+            this.ageLimit=ageLimit;
+    }
+    public void setDuration(int duration){
         this.duration=duration;
 }
 
     public boolean isActive() {
         return active;
     }
-
     public void setActive(boolean active) {
         this.active = active;
     }

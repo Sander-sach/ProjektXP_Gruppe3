@@ -1,4 +1,4 @@
-
+import {loadAgeLimit, loadGenres} from "./loadDataFunctions.js";
 
 
 loadGenres();
@@ -45,50 +45,4 @@ async function createNewMovie(){
     } catch (error) {
         console.error(error);
     }
-}
-
-async function loadGenres() {
-
-    const response = await fetch("/api/genres");
-
-    if (!response.ok) {
-        throw new Error("Failed to load genres");
-    }
-
-    const genres = await response.json();
-
-    const genreSelect = document.getElementById("genreSelect");
-
-    genres.forEach(genre => {
-
-        const option = document.createElement("option");
-
-        option.value = genre;
-        option.textContent = genre;
-
-        genreSelect.appendChild(option);
-    });
-}
-
-async function loadAgeLimit() {
-
-    const response = await fetch("/api/agelimit");
-
-    if (!response.ok) {
-        throw new Error("Failed to load genres");
-    }
-
-    const ageLimits = await response.json();
-
-    const ageLimitSelect = document.getElementById("ageLimitSelect");
-
-    ageLimits.forEach(ageLimit => {
-
-        const option = document.createElement("option");
-
-        option.value = ageLimit;
-        option.textContent = ageLimit;
-
-        ageLimitSelect.appendChild(option);
-    });
 }

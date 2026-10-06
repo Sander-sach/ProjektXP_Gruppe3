@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Create Movie</title>
+    <title>Edit Movie</title>
     <link rel="stylesheet" href="/css/movieOverview.css">
 </head>
 <body>
-<header>Create Movie</header>
+<header>Edit Movie</header>
 
 
 <div id="Movielist">
     <div class="movieCreation">
         <h2>Movie Titel</h2>
         <input type="text"
-               id="movieTitle"
-               placeholder="Movie Title">
-        <p>Description</p>
+               id="movieTitle">
 
+        <p>Description</p>
         <input type="text"
                id="movieDescription"
                placeholder="Movie description">
 
         <p>Genre</p>
         <select id="genreSelect">
-            <option value="">All Genres</option>
         </select>
 
         <p>Age Limit</p>
-
         <select id="ageLimitSelect">
-            <option value="">Age limit</option>
         </select>
 
         <p>Duration</p>
         <input type="text"
                id="duration"
                placeholder="Movie Duration">
-        <button id="createMovieConfirmation">Create Movie</button>
+        <button id="updateMovieConfirmation">Update Movie</button>
     </div>
 </div>
-<script src="js/createMovie.js"></script>
+<script type=module src="js/editMovie.js"></script>
 
 </body>
 </html>
