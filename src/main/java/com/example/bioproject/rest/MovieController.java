@@ -21,7 +21,7 @@ public class MovieController {
         return movieService.findAllMovies();
     }
     //Opret film
-    @PostMapping
+    @PostMapping("/movies/create")
     public Movie createMovie(@RequestBody Movie movie){
         return movieService.createMovie(movie);
     }

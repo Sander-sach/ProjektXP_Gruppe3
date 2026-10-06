@@ -19,6 +19,7 @@ public class MovieService {
     public List<Movie> findAllMovies(){
         return movieRepo.findAll();
     }
+
     public Movie createMovie(Movie movie){
         return movieRepo.save(movie);//Gemmer den nye film, i vores database.
 

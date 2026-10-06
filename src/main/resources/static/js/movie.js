@@ -22,32 +22,25 @@ async function createNewMovie(){
 
     const newMovie = {
         movieTitle: movieTitle,
-        movieDescription: movieDescription,
-        genreSelect: genreSelect,
-        ageLimitSelect: ageLimitSelect,
+        description: movieDescription,
+        genre: genreSelect,
+        ageLimit: ageLimitSelect,
         duration: duration
     };
 
-    console.log(newMovie)
-
     try {
 
-        const response = await fetch("/api/screenings/batch", {
+        const response = await fetch("/api/movies/create", {
 
             method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newMovie)
+
         });
 
-        if (!response.ok) {
-            throw new Error("Failed to save screenings");
-        }
+        if (!response.ok) {throw new Error("Failed to save movie");}
 
-        alert("Screenings created successfully");
+        alert("Movie created successfully");
 
     } catch (error) {
         console.error(error);
