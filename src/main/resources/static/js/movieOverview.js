@@ -10,12 +10,7 @@ document.getElementById("castSearch")
     .addEventListener("input", filterMovies);
 
 document.getElementById("date")
-    .addEventListener("change", filterMovies)
-
-document.getElementById("login-btn")
-    .addEventListener("click", () => {
-        window.location.href = "../login.html";
-    });
+    .addEventListener("change", filterMovies);
 
 initializePage();
 
