@@ -2,43 +2,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Movie</title>
-    <link rel="stylesheet" href="/css/movieOverview.css">
+    <link rel="stylesheet" href="/css/general.css">
     <script type=module src="js/createMovie.js"></script>
 </head>
 <body>
-<header>Create Movie</header>
 
+<a href="/index.html" class="back-link">&larr; Back to front page</a>
 
-<div id="Movielist">
-    <div class="movieCreation">
-        <h2>Movie Titel</h2>
-        <input type="text"
-               id="movieTitle"
-               placeholder="Movie Title">
-        <p>Description</p>
+<h1>Create Movie</h1>
 
-        <input type="text"
-               id="movieDescription"
-               placeholder="Movie description">
+<div class="input-section">
+    <p>Movie Titel</p>
+    <input type="text"
+           id="movieTitle"
+           placeholder="Movie Title">
+    <p>Description</p>
 
-        <p>Genre</p>
-        <select id="genreSelect">
-            <option value="">All Genres</option>
-        </select>
+    <input type="text"
+           id="movieDescription"
+           placeholder="Movie description">
 
-        <p>Age Limit</p>
+    <p>Genre</p>
+    <select id="genreSelect">
+        <option value="">All Genres</option>
+    </select>
 
-        <select id="ageLimitSelect">
-            <option value="">Age limit</option>
-        </select>
+    <p>Age Limit</p>
 
-        <p>Duration</p>
-        <input type="text"
-               id="duration"
-               placeholder="Movie Duration">
-        <button id="createMovieConfirmation">Create Movie</button>
-    </div>
+    <select id="ageLimitSelect">
+        <option value="">Age limit</option>
+    </select>
+
+    <p>Duration</p>
+    <input type="text"
+           id="duration"
+           placeholder="Movie Duration">
+    <button id="createMovieConfirmation">Create Movie</button>
 </div>
+
 
 </body>
 </html>

@@ -53,7 +53,7 @@ loginForm.addEventListener('submit', async (event) => {
     if (response.ok) {
         const loginResponse = await response.json();
         sessionStorage.setItem('user', JSON.stringify(loginResponse));
-        registerDialog.close();
+        loginDialog.close();
         location.replace('/create_screening_form.html');
     } else {
         console.error('Login failed:', response.status);

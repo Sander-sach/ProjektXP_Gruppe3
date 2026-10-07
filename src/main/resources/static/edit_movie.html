@@ -2,39 +2,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Movie</title>
-    <link rel="stylesheet" href="/css/movieOverview.css">
+    <link rel="stylesheet" href="/css/general.css">
     <script type=module src="js/editMovie.js"></script>
 </head>
 <body>
-<header>Edit Movie</header>
 
+<a href="/index.html" class="back-link">&larr; Back to front page</a>
 
-<div id="Movielist">
-    <div class="movieCreation">
-        <h2>Movie Titel</h2>
-        <input type="text"
-               id="movieTitle">
+<div class="input-section">
+    <h2>Edit Movie</h2>
+    <p>Movie Titel</p>
+    <input type="text"
+           id="movieTitle">
 
-        <p>Description</p>
-        <input type="text"
-               id="movieDescription"
-               placeholder="Movie description">
+    <p>Description</p>
+    <input type="text"
+           id="movieDescription"
+           placeholder="Movie description">
 
-        <p>Genre</p>
-        <select id="genreSelect">
-        </select>
+    <p>Genre</p>
+    <select id="genreSelect">
+    </select>
 
-        <p>Age Limit</p>
-        <select id="ageLimitSelect">
-        </select>
+    <p>Age Limit</p>
+    <select id="ageLimitSelect">
+    </select>
 
-        <p>Duration</p>
-        <input type="text"
-               id="duration"
-               placeholder="Movie Duration">
-        <button id="updateMovieConfirmation">Update Movie</button>
-    </div>
+    <p>Duration</p>
+    <input type="text"
+           id="duration"
+           placeholder="Movie Duration">
+    <button id="updateMovieConfirmation">Update Movie</button>
 </div>
+
 
 </body>
 </html>
