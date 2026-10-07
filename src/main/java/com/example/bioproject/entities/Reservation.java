@@ -41,4 +41,25 @@ public class Reservation {
     public int getNumberOfPeople() {
         return numberOfPeople;
     }
+
+
+    public Long setId() {
+        return id;
+    }
+
+    public Screening setScreening() {
+        return screening;
+    }
+
+    public String setCustomerName(String customerName) {
+        return customerName;
+    }
+
+    public String setCustomerMobile(String customerMobile) {
+        return customerMobile;
+    }
+
+    public int setNumberOfPeople(int numberOfPeople) {
+        return numberOfPeople;
+    }
 }
