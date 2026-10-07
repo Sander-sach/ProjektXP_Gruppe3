@@ -37,7 +37,7 @@ public class ScreeningService {
     // window.location.href
 
     //dockerfile
-    //compose.yml fil
+    //compose.yaml fil
     //Database service på compose
     //Application service på compose
     //application skal spændes op på en container og database på en container og så skal de snakke sammen.
