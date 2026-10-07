@@ -29,11 +29,14 @@ public class Movie {
     @ColumnDefault("true")
     private boolean active = true; //false = removed from the program
 
+
+    //der skal også være dato - så man kan oprette data.
+
     public Movie() {}
 
     public Long getId() {
-        return id;
-    }
+    return id;
+}
 
     public String getMovieTitle() {
         return movieTitle;
@@ -54,11 +57,25 @@ public class Movie {
     public int getDuration() {
         return duration;
     }
+    public void setMovieTitle(String movieTitle){
+            this.movieTitle=movieTitle;
+    }
+    public void setDescription(String description){
+            this.description=description;
+    }
+    public void setGenre(GenreEnum genre){
+            this.genre=genre;
+    }
+    public void setAgeLimit(AgeLimitEnum ageLimit){
+            this.ageLimit=ageLimit;
+    }
+    public void setDuration(int duration){
+        this.duration=duration;
+}
 
     public boolean isActive() {
         return active;
     }
-
     public void setActive(boolean active) {
         this.active = active;
     }

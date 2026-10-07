@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Movie</title>
+    <link rel="stylesheet" href="/css/movieOverview.css">
+</head>
+<body>
+<header>Edit Movie</header>
+
+
+<div id="Movielist">
+    <div class="movieCreation">
+        <h2>Movie Titel</h2>
+        <input type="text"
+               id="movieTitle">
+
+        <p>Description</p>
+        <input type="text"
+               id="movieDescription"
+               placeholder="Movie description">
+
+        <p>Genre</p>
+        <select id="genreSelect">
+        </select>
+
+        <p>Age Limit</p>
+        <select id="ageLimitSelect">
+        </select>
+
+        <p>Duration</p>
+        <input type="text"
+               id="duration"
+               placeholder="Movie Duration">
+        <button id="updateMovieConfirmation">Update Movie</button>
+    </div>
+</div>
+<script type=module src="js/editMovie.js"></script>
+
+</body>
+</html>
