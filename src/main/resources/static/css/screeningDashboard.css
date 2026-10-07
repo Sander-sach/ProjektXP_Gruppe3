@@ -9,6 +9,12 @@ body {
     color: white;
 }
 
+a {
+    text-decoration: none;
+}
+
+button {
+    padding: 12px 20px;
 /* Tilbage knap */
 
 .back-link {
@@ -25,6 +31,17 @@ body {
     background-color 0.2s ease;
 }
 
+button:hover {
+    transform: scale(1.1);
+    background-color: #323B48;
+    cursor: pointer;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 .back-link:hover {
     transform: scale(1.1);
     background-color: #323B48;

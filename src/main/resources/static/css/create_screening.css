@@ -1,0 +1,94 @@
+
+body {
+    margin: 0;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    background-color: #111a27;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-section {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#basicInput select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #202936;
+    color: lightgray;
+    font-size: 14px;
+
+    transition: transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+#basicInput select:hover {
+    transform: scale(1.03);
+    background-color: #323B48;
+    cursor: pointer;
+}
+
+#screeningsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.screening-row {
+    padding: 16px;
+    border-radius: 6px;
+    background-color: #202936;
+    border: 1px solid #444;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    transition: transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.screening-row:hover {
+    transform: scale(1.02);
+    background-color: #323B48;
+}
+
+.screening-row input,
+.screening-row select {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #111a27;
+    color: lightgray;
+    font-size: 14px;
+
+    transition: background-color 0.2s ease;
+}
+
+.screening-row input:hover,
+.screening-row select:hover {
+    background-color: #202936;
+}
+
+#btn-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+button {
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #202936;
+}
