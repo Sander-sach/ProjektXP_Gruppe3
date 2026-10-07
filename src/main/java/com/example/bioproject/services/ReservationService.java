@@ -35,4 +35,17 @@ public class ReservationService {
 
         return reservationRepository.save(reservation);
     }
+    public Reservation updateReservation(long id, Reservation reservation){
+        Reservation existingReservation = reservationRepository.findById(id)
+                .orElseThrow();
+        existingReservation.setCustomerName(reservation.getCustomerName());
+        existingReservation.setCustomerMobile(reservation.getCustomerMobile());
+        existingReservation.setNumberOfPeople(reservation.getNumberOfPeople());
+
+
+        return reservationRepository.save(existingReservation);
+    }
+    public void deleteReservation(long id){
+        reservationRepository.deleteById(id);
+    }
 }
