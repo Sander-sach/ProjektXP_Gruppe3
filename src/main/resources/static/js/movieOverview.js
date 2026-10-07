@@ -1,3 +1,5 @@
+import {loadAndPopulateGenres, loadMovies, loadScreenings} from "./loadDataFunctions.js";
+
 //This list always contains all movies. Instead we make temporary lists for filtering
 let allMovies = [];
 let allScreenings = [];
@@ -101,10 +103,10 @@ async function initializePage() {
     try {
         //Promise fails if any of the functions fail, then initialization doesnt work
         //Error will be displayed in web console if fails
-        await Promise.all([
+        [allMovies, allScreenings] = await Promise.all([
             loadMovies(),
-            loadGenres(),
-            loadScreenings()
+            loadScreenings(),
+            loadAndPopulateGenres()
         ]);
 
         filterMovies();
@@ -112,53 +114,4 @@ async function initializePage() {
     } catch (error) {
         console.error("Failed to initialize page", error);
     }
-}
-
-// Fetch all movies from the API
-async function loadMovies() {
-
-    const response = await fetch("/api/movies");
-
-    if (!response.ok) {
-        throw new Error("Failed to load movies");
-    }
-
-    allMovies = await response.json();
-
-}
-
-async function loadScreenings() {
-
-    const response = await fetch("/api/screenings");
-
-    if (!response.ok) {
-        throw new Error("Failed to load Screenings");
-    }
-
-    allScreenings = await response.json();
-
-}
-
-// Fetch all available genres
-async function loadGenres() {
-
-    const response = await fetch("/api/genres");
-
-    if (!response.ok) {
-        throw new Error("Failed to load genres");
-    }
-
-    const genres = await response.json();
-
-    const genreSelect = document.getElementById("genreSelect");
-
-    genres.forEach(genre => {
-
-        const option = document.createElement("option");
-
-        option.value = genre;
-        option.textContent = genre;
-
-        genreSelect.appendChild(option);
-    });
 }

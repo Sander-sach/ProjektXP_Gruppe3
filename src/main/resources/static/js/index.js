@@ -18,7 +18,7 @@ const registerForm = document.getElementById('register');
 registerForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const response = await fetch('/api/v1/create-employee', {
+    const response = await fetch('/api/create-employee', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -41,7 +41,7 @@ const loginForm = document.getElementById("login")
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const response = await fetch('/api/v1/login-request', {
+    const response = await fetch('/api/login-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

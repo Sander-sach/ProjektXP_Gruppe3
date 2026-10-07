@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/genres")
 public class GenreController {
 
-    @GetMapping("/genres")
+    @GetMapping
     public GenreEnum[] getAllEnum() {
         return GenreEnum.values();
     }

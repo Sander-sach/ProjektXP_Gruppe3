@@ -1,8 +1,8 @@
-import {loadAgeLimit, loadGenres} from "./loadDataFunctions.js";
+import {loadAndPopulateAgeLimit, loadAndPopulateGenres} from "./loadDataFunctions.js";
 
 
-loadGenres();
-loadAgeLimit();
+loadAndPopulateGenres();
+loadAndPopulateAgeLimit();
 
 document.getElementById("createMovieConfirmation")
     .addEventListener("click", createNewMovie);

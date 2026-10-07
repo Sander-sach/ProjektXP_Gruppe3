@@ -1,4 +1,4 @@
-import {loadGenres, loadMovies, loadScreenings} from "./loadDataFunctions.js";
+import {loadAndPopulateGenres, loadMovies, loadScreenings} from "./loadDataFunctions.js";
 
 let allMovies = [];
 let allScreenings = [];
@@ -27,7 +27,7 @@ async function initializePage() {
         const [movies, screenings, genres] = await Promise.all([
             loadMovies(),
             loadScreenings(),
-            loadGenres()
+            loadAndPopulateGenres()
         ]);
 
         allMovies = movies;

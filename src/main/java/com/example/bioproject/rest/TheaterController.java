@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/theaters")
 public class TheaterController {
 
     private final TheaterService theaterService;
@@ -19,7 +19,7 @@ public class TheaterController {
         this.theaterService = theaterService;
     }
 
-    @GetMapping("/theaters")
+    @GetMapping
     public List<Theater> getAllTheaters() {
         return theaterService.findAllTheaters();
     }

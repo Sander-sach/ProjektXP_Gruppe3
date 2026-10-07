@@ -1,18 +1,15 @@
-const params = new URLSearchParams(window.location.search);
 
-const movieId = params.get("id");
+initializePage()
 
-const screeningsJson = sessionStorage.getItem("movieScreenings");
+function initializePage(){
+    const screeningsJson = sessionStorage.getItem("movieScreenings");
 
-const screenings = JSON.parse(screeningsJson);
+    const screenings = JSON.parse(screeningsJson);
 
-console.log(screenings);
-
-displayScreenings(screenings);
+    displayScreenings(screenings);
+}
 
 function displayScreenings(screenings) {
-
-    console.log(screenings);
 
     const title = document.getElementById("movieTitle");
     title.innerText = screenings[0].movie.movieTitle;
@@ -65,6 +62,7 @@ function displayScreenings(screenings) {
     });
 }
 
+//gave up, found a different solution
 function displayWeek(){
 
     const week = document.createElement("div");

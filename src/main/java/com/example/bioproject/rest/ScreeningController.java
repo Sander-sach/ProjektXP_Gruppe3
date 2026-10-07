@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/screenings")
 public class ScreeningController {
 
     private final ScreeningService screeningService;
@@ -20,13 +20,13 @@ public class ScreeningController {
     }
 
     //Gets all screenings in a list
-    @GetMapping("/screenings")
+    @GetMapping
     public List<Screening> getAllScreenings() {
         return screeningService.getAllScreenings();
     }
 
     //Sends all screenings as list from frontend to service for saving
-    @PostMapping("/screenings/batch")
+    @PostMapping("/batch")
     public ResponseEntity<Void> createScreenings(@RequestBody List<CreateScreeningDTO> screenings) throws Exception {
 
         screeningService.createScreenings(screenings);

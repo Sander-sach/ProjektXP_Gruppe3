@@ -17,7 +17,6 @@ async function loadData() {
     }
 
     allMovies = await movieResponse.json();
-    console.log(allMovies);
     allTheaters = await theaterResponse.json();
     allScreenings = await screeningResponse.json();
 }

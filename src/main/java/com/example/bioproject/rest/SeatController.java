@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/seats")
 public class SeatController {
 
     private final SeatService seatService;
@@ -18,7 +18,7 @@ public class SeatController {
         this.seatService = seatService;
     }
 
-    @GetMapping("/seats")
+    @GetMapping
     public List<Seat> getAllSeats() {
         return seatService.getAllSeats();
     }

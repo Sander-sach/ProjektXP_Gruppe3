@@ -1,30 +1,11 @@
-let allMovies = [];
-let allScreenings = [];
+// All the load functions in one place.
+// Just import the function in your js and change the script to type=module in the HTML
 
-export async function loadMovies() {
 
-    const response = await fetch("/api/movies");
-
-    if (!response.ok) {
-        throw new Error("Failed to load movies");
-    }
-
-    return allMovies = await response.json();
-
-}
-
-export async function loadScreenings() {
-
-    const response = await fetch("/api/screenings");
-
-    if (!response.ok) {
-        throw new Error("Failed to load Screenings");
-    }
-
-    return allScreenings = await response.json();
-}
-
-export async function loadGenres() {
+//ElementId="genreSelect"
+//In your HTML you have to call the dropDown Id "genreSelect"
+//then the funvtion populates the dropdown with the correct data
+export async function loadAndPopulateGenres() {
 
     const response = await fetch("/api/genres");
 
@@ -48,7 +29,9 @@ export async function loadGenres() {
     return genres;
 }
 
-export async function loadAgeLimit() {
+//ElementId="ageLimitSelect"
+//same as Genres but with agelimits
+export async function loadAndPopulateAgeLimit() {
 
     const response = await fetch("/api/agelimit");
 
@@ -70,4 +53,51 @@ export async function loadAgeLimit() {
         ageLimitSelect.appendChild(option);
     });
     return ageLimits;
+}
+
+export async function loadMovies() {
+
+    const response = await fetch("/api/movies");
+
+    if (!response.ok) {
+        throw new Error("Failed to load movies");
+    }
+    const allMovies= await response.json();
+    return allMovies;
+
+}
+
+export async function loadScreenings() {
+
+    const response = await fetch("/api/screenings");
+
+    if (!response.ok) {
+        throw new Error("Failed to load Screenings");
+    }
+    const allScreenings = await response.json();
+    return allScreenings;
+}
+
+export async function loadReservations() {
+
+    const response = await fetch("/api/reservations");
+
+    if (!response.ok) {
+        throw new Error("Failed to load reservations");
+    }
+
+    const allReservations = await response.json();
+    return allReservations;
+}
+
+export async function loadSeats() {
+
+    const response = await fetch("/api/seats");
+
+    if (!response.ok) {
+        throw new Error("Failed to load seats");
+    }
+
+    const allSeats = await response.json();
+    return allSeats;
 }

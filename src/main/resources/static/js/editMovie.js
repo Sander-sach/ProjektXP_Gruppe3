@@ -1,4 +1,4 @@
-import {loadAgeLimit, loadGenres} from "./loadDataFunctions.js";
+import {loadAndPopulateAgeLimit, loadAndPopulateGenres} from "./loadDataFunctions.js";
 
 let movie;
 
@@ -9,8 +9,8 @@ initializePage();
 
 async function initializePage() {
 
-    await loadGenres();
-    await loadAgeLimit();
+    await loadAndPopulateGenres();
+    await loadAndPopulateAgeLimit();
 
     const movieJson = sessionStorage.getItem("movie");
     movie = JSON.parse(movieJson);
