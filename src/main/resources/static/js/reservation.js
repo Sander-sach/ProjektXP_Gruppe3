@@ -23,11 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const screening = JSON.parse(sessionStorage.getItem("selectedScreening"));
 
         const reservation = {
-            screening: { id: screening.id },
+            screeningId: screening.id,
             customerName: document.getElementById("name").value,
             customerMobile: document.getElementById("mobile").value,
             numberOfPeople: parseInt(document.getElementById("people").value)
         };
+
 
         try {
             const response = await fetch("api/reservation", {

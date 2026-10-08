@@ -5,6 +5,7 @@ import com.example.bioproject.entities.Reservation;
 import com.example.bioproject.entities.Screening;
 import com.example.bioproject.repositories.ReservationRepository;
 import com.example.bioproject.repositories.ScreeningRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
