@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <script type=module src="js/reservationOverview.js"></script>
+</head>
+<body>
+
+<a href="/" class="back-link">&larr; Back to front page</a>
+
+<h1>Reservations</h1>
+
+<section class="filter-nav">
+    <div class="filter-nav-actions">
+
+        <input type="date" id="search-input-date">
+
+        <input type="text"
+               id="search-reservation-bar"
+               placeholder="Search reservation">
+    </div>
+</section>
+
+<section>
+    <table class="reservation-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Tickets</th>
+                <th>Phone</th>
+                <th>Movie</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Theater</th>
+            </tr>
+        </thead>
+        <tbody id="reservation-body"></tbody>
+    </table>
+</section>
+
+</body>
+</html>
