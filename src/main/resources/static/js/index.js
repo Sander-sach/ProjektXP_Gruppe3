@@ -1,34 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const registerDialog = document.getElementById('registerDialog');
 
-
-    document.getElementById('registerBtn')
-        .addEventListener('click', () => registerDialog.showModal());
-    registerDialog.querySelector(".cancel-btn")
-        .addEventListener('click', () => registerDialog.close());
 });
 
-const registerForm = document.getElementById('register');
+const loginForm = document.getElementById("login")
 
-
-registerForm.addEventListener('submit', async (event) => {
+loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const response = await fetch('/api/create-employee', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+    const response = await fetch('/api/login-request', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            userName: registerForm.registerUserName.value,
-            password: registerForm.registerPassword.value,
-            employeeRole: registerForm.role.value
+            userName: loginForm.loginUserName.value,
+            password: loginForm.loginPassword.value,
         })
     });
 
     if (response.ok) {
-        registerDialog.close();
-        registerForm.reset();
+        const loginResponse = await response.json();
+        sessionStorage.setItem("user", JSON.stringify(loginResponse));
+        location.replace("/employee-tools.html");
     } else {
-        console.error('Registration failed:', response.status);
+        console.error("Login failed:", response.status);
     }
 });
 
