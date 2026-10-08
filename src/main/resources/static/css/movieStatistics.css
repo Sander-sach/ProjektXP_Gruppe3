@@ -1,5 +1,4 @@
 
-
 .description {
     color: lightgray;
     font-size: 14px;
@@ -20,38 +19,6 @@
     margin: 8px 0;
     color: lightgray;
     font-size: 14px;
-}
-
-/* Statistics table */
-
-.statistics-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #202936;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.statistics-table th {
-    padding: 15px;
-    text-align: left;
-    background-color: #323B48;
-    font-size: 14px;
-}
-
-.statistics-table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #323B48;
-    font-size: 14px;
-}
-
-.statistics-table tr {
-    transition: background-color 0.2s ease;
-}
-
-.statistics-table tbody tr:hover {
-    background-color: #323B48;
 }
 
 /* Status farver */

@@ -1,4 +1,3 @@
-
 /* Page layout */
 body {
     margin: 0;
@@ -11,10 +10,104 @@ body {
 /* Header */
 h1 {
     margin-top: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-/* Tilbage knap */
+
+/*      Inputs og dropdowns         */
+select,
+input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #202936;
+    color: white;
+    font-size: 14px;
+    color-scheme: dark; /* gør kalender ikonet synligt på mørk baggrund */
+
+    transition: transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+select:hover,
+input:hover {
+    transform: scale(1.03);
+    background-color: #323B48;
+    cursor: pointer;
+}
+
+
+/*      Knapper og Navigerings Knapper      */
+button,
+.nav-button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #202936;
+    color: lightgray;
+    font-size: 14px;
+
+    transition: transform 0.2s ease,
+    background-color 0.2s ease;
+}
+button:hover,
+.nav-button:hover {
+    transform: scale(1.1);
+    background-color: #323B48;
+    cursor: pointer;
+    text-decoration: none;
+}
+.nav-button{
+    text-decoration: none;
+}
+
+/*          Navigerings Bar             */
+.nav-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+/*      Filter & search areas      */
+.filter-nav {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+}
+
+
+/*          Tables          */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #202936;
+    border-radius: 8px;
+    overflow: hidden;
+}
+table th {
+    padding: 15px;
+    text-align: left;
+    background-color: #323B48;
+    font-size: 14px;
+}
+table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #323B48;
+    font-size: 14px;
+}
+table tr {
+    transition: background-color 0.2s ease;
+}
+table tbody tr:hover {
+    background-color: #323B48;
+}
+
+
+/*          Tilbage knap        */
 .back-link {
     padding: 6px 12px;
     border-radius: 6px;
@@ -37,8 +130,8 @@ h1 {
     cursor: pointer;
 }
 
-/* Input section */
 
+/* Input section */
 .input-section {
     display: flex;
     flex-direction: column;
@@ -46,74 +139,6 @@ h1 {
     max-width: 900px;
 }
 
-/* Inputs og dropdowns */
-
-.input-section select,
-.input-section input {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #444;
-    background-color: #202936;
-    color: white;
-    font-size: 14px;
-    color-scheme: dark; /* gør kalender ikonet synligt på mørk baggrund */
-}
-
-.input-section select:disabled {
-    color: gray;
-    cursor: not-allowed;
-}
-
-/* Knapper */
-button, .nav-button {
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: 1px solid #444;
-    background-color: #202936;
-    color: lightgray;
-    font-size: 14px;
-
-    transition: transform 0.2s ease,
-    background-color 0.2s ease;
-}
-button:hover, .nav-button:hover {
-    transform: scale(1.1);
-    background-color: #323B48;
-    cursor: pointer;
-}
-
-.nav-button{
-    text-decoration: none;
-}
-
-
-/* Knapper til input
-Den er den samme som normale knapper pt,
-men kan ændres efter behov */
-.input-section button {
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: 1px solid #444;
-    background-color: #202936;
-    color: lightgray;
-    font-size: 14px;
-
-    transition: transform 0.2s ease,
-    background-color 0.2s ease;
-}
-.input-section button:hover {
-    transform: scale(1.1);
-    background-color: #323B48;
-    cursor: pointer;
-}
-
-/* Navigerings knapper */
-.nav-bar {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-}
 
 /* Hvis vi skulle bruge det andre steder en index*/
 dialog {
