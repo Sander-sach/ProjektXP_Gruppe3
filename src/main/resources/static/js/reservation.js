@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8080/reservation", {
+            const response = await fetch("api/reservation", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reservation)
@@ -42,4 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error:", err);
         }
     });
-}
+});
