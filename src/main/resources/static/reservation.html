@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <script type="module" src="js/reservation.js"></script>
+</head>
+<body>
+<a href="/" class="back-link">&larr; Back to front page</a>
+
+<h1>Make a reservation</h1>
+
+<div id="screeningInfo"></div>
+
+<form id="reservationForm">
+    <label>
+        Name:
+        <input type="text" id="name" required>
+    </label>
+    <br>
+    <label>
+        Mobile:
+        <input type="text" id="mobile" required>
+    </label>
+    <br>
+    <label>
+        Number of people:
+        <input type="number" id="people" min="1" required>
+    </label>
+    <br>
+    <button type="submit">Confirm reservation</button>
+</form>
+
+</body>
+</html>
