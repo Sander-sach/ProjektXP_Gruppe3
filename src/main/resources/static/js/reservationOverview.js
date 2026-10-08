@@ -1,17 +1,59 @@
-import {loadMovies, loadScreenings, loadReservations, loadSeats} from "./loadDataFunctions.js";
+import {loadReservations} from "./loadDataFunctions.js";
 
-let allMovies = [];
-let allScreenings = [];
 let allReservations = [];
-let allSeats = [];
+
+// EventListeners - Automatically update when filters change
+
+document.getElementById("search-reservation-bar")
+    .addEventListener("input", filterReservations);
+
+document.getElementById("search-input-date")
+    .addEventListener("change", filterReservations);
 
 initializePage();
 
-function displayReservations() {
+//Filters Reservations - Runs when text is written or date is picked
+function filterReservations() {
+    const textInput = document.getElementById("search-reservation-bar").value.toLowerCase();
+
+    const selectedDate = document.getElementById("search-input-date").value;
+    console.log(selectedDate);
+
+
+    const filteredReservations = allReservations.filter(reservation => {
+
+        //Check if input matches any of the values we wanna check - Name, Phone, Movie Title
+        const matchesName =
+            reservation.customerName.toLowerCase().includes(textInput)
+            || textInput==="";
+
+        const matchesPhone =
+            reservation.customerMobile.toLowerCase().includes(textInput)
+            || textInput==="";
+
+        const matchesMovie =
+            reservation.screening.movie.movieTitle.toLowerCase().includes(textInput)
+            || textInput==="";
+
+        // Fixes timedate thing
+
+        const matchesDate =
+            reservation.screening.startTime.startsWith(selectedDate)
+            || selectedDate === "";
+
+        return (matchesName && matchesDate) || (matchesPhone && matchesDate) || (matchesMovie && matchesDate);
+    })
+
+    displayReservations(filteredReservations);
+
+}
+
+//Populates the table with filtered info
+function displayReservations(filteredReservations) {
     const reservationBody = document.getElementById("reservation-body");
     reservationBody.innerHTML = "";
 
-    allReservations.forEach(reservation => {
+    filteredReservations.forEach(reservation => {
 
         const row = document.createElement("tr");
 
@@ -34,8 +76,7 @@ function displayReservations() {
         //formats Date
         date.textContent = timeDate.toLocaleDateString("en-GB", {
             day: "2-digit",
-            month: "2-digit",
-            year: "2-digit"
+            month: "short"
         });
 
         //formats Time
@@ -65,10 +106,7 @@ async function initializePage() {
             loadReservations()
         ]);
 
-        console.log("reservations")
-        console.log(allReservations[0])
-
-        displayReservations()
+        filterReservations()
 
     } catch (error) {
         console.error("Failed to initialize page", error);
