@@ -1,15 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const registerDialog = document.getElementById('registerDialog');
-    const loginDialog = document.getElementById('loginDialog');
+
 
     document.getElementById('registerBtn')
         .addEventListener('click', () => registerDialog.showModal());
-    document.getElementById('loginBtn')
-        .addEventListener('click', () => loginDialog.showModal());
     registerDialog.querySelector(".cancel-btn")
         .addEventListener('click', () => registerDialog.close());
-    loginDialog.querySelector(".cancel-btn")
-        .addEventListener('click', () => loginDialog.close());
 });
 
 const registerForm = document.getElementById('register');
@@ -36,28 +32,6 @@ registerForm.addEventListener('submit', async (event) => {
     }
 });
 
-const loginForm = document.getElementById("login")
 
-loginForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const response = await fetch('/api/login-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            userName: loginForm.loginUserName.value,
-            password: loginForm.loginPassword.value,
-        })
-    });
-
-    if (response.ok) {
-        const loginResponse = await response.json();
-        sessionStorage.setItem('user', JSON.stringify(loginResponse));
-        loginDialog.close();
-        location.replace('/create_screening_form.html');
-    } else {
-        console.error('Login failed:', response.status);
-    }
-});
 
 

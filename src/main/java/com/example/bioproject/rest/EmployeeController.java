@@ -5,6 +5,7 @@ import com.example.bioproject.dtos.EmployeeAccountCredentials;
 import com.example.bioproject.dtos.LoginCredentials;
 import com.example.bioproject.dtos.LoginResponse;
 import com.example.bioproject.services.EmployeeService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +29,12 @@ public class EmployeeController {
     }
 
     @PostMapping("/login-request")
-    public ResponseEntity<LoginResponse> loginRequest(@RequestBody LoginCredentials credentials){
-        LoginResponse response = employeeService.validateLoginCredentials(credentials);
-            if(response == null){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-           return ResponseEntity.ok(response);
+    public ResponseEntity<LoginResponse> loginRequest(@RequestBody LoginCredentials credentials, HttpSession session ){
+        LoginResponse user = employeeService.validateLoginCredentials(credentials);
+            if(user == null) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+            session.setAttribute("user", user);
+           return ResponseEntity.ok(user);
     }
 
 }
