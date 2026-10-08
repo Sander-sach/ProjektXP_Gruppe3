@@ -55,7 +55,7 @@ function filterMovies() {
             })
 
         //Only returns movies where matchesGenre, matchesSearch and matchesDate are all true
-        return matchesGenre && matchesSearch && matchesDate;
+        return matchesGenre && matchesSearch && matchesDate  && movie.active===true;
     });
 
     displayMovies(filteredMovies);

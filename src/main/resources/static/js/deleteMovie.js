@@ -21,6 +21,7 @@ async function deleteMovie() {
         }
 
         alert("Movie deleted successfully");
+        window.location.href = "choose_movie_to_delete.html";
 
     } catch (error) {
         console.error(error);
