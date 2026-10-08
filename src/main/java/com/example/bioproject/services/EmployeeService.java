@@ -54,6 +54,8 @@ public class EmployeeService {
 
     public LoginResponse validateLoginCredentials(LoginCredentials credentials){
         Employee employee = employeeRepository.findEmployeeByUserName(credentials.userName());
+        if(employee == null) return null;
+
         if(!validateLoginPassword(credentials.password(), employee.getPassword())){
             return null;
         }
