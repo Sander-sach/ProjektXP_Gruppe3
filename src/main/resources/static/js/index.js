@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-
 });
 
-const loginForm = document.getElementById("login")
+const loginForm = document.getElementById("loginForm")
+const errorMessage = document.querySelector(".error-message");
 
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -18,10 +18,12 @@ loginForm.addEventListener('submit', async (event) => {
 
     if (response.ok) {
         const loginResponse = await response.json();
-        sessionStorage.setItem("user", JSON.stringify(loginResponse));
+        //sessionStorage.setItem("user", JSON.stringify(loginResponse));
         location.replace("/employee-tools.html");
     } else {
         console.error("Login failed:", response.status);
+        errorMessage.textContent = "Wrong username or password";
+        errorMessage.hidden = false;
     }
 });
 

@@ -9,22 +9,18 @@
 </head>
 
 <body>
-<div class="form-box">
-    <dialog id="loginDialog">
-        <div class="form-group">
-            <form method="dialog" id="login">
-                <h2>Login</h2>
-                <label for="loginUserName">Brugernavn</label>
-                <input type="text" id="loginUserName" name="loginUserName" required>
-                <label for="loginPassword">Adgangskode</label>
-                <input type="password" id="loginPassword" name="loginPassword" required>
-                <menu>
-                    <button type="button" class="cancel-btn">Annuller</button>
-                    <button type="submit">Login</button>
-                </menu>
-            </form>
-        </div>
-    </dialog>
+<div class="login-card">
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="loginUserName">Username</label>
+        <input type="text" id="loginUserName" name="userName" required>
+
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" name="password" required>
+
+        <button type="submit">Log ind</button>
+        <p class="error-message" hidden></p>
+    </form>
 </div>
 </body>
 </html>
