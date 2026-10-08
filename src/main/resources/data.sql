@@ -192,3 +192,8 @@ VALUES
 -- The Hangover
 (8, 'Karl Pedersen', '38901234', 1),
 (16, 'Ella Holm', '39012345', 2);
+
+
+
+INSERT INTO employee (user_name, password, role)
+VALUES ('Demo', '', 'FILMOPERATOER');
