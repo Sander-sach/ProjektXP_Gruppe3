@@ -8,16 +8,23 @@ import com.example.bioproject.repositories.ScreeningRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final ScreeningRepository screeningRepository;
 
-    public ReservationService(ReservationRepository reservationRepository,
-                              ScreeningRepository screeningRepository) {
+    public ReservationService(
+            ReservationRepository reservationRepository,
+            ScreeningRepository screeningRepository) {
         this.reservationRepository = reservationRepository;
         this.screeningRepository = screeningRepository;
+    }
+
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
     }
 
     public Reservation createReservation(ReservationDTO dto) {

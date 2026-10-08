@@ -80,7 +80,7 @@ export async function loadScreenings() {
 
 export async function loadReservations() {
 
-    const response = await fetch("/api/reservations");
+    const response = await fetch("/api/reservation");
 
     if (!response.ok) {
         throw new Error("Failed to load reservations");
