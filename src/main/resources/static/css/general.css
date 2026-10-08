@@ -16,7 +16,8 @@ h1 {
 
 /*      Inputs og dropdowns         */
 select,
-input {
+input,
+textarea{
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #444;
@@ -30,7 +31,7 @@ input {
 }
 
 select:hover,
-input:hover {
+input:hover{
     transform: scale(1.03);
     background-color: #323B48;
     cursor: pointer;
