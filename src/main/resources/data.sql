@@ -196,4 +196,4 @@ VALUES
 
 
 INSERT INTO employee (user_name, password, role)
-VALUES ('Demo', '', 'FILMOPERATOER');
+VALUES ('Demo', '$2a$10$dnPbnAvRfSN8io/tUrfNNO5PpWNKcDxo68C5kMupxMJwXeOpmldHi', 'FILMOPERATOER');
