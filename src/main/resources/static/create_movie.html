@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <title>Create Movie</title>
     <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/movieForms.css">
     <script type=module src="js/createMovie.js"></script>
 </head>
 <body>
@@ -12,15 +13,16 @@
 <h1>Create Movie</h1>
 
 <div class="input-section">
+
     <p>Movie Titel</p>
     <input type="text"
            id="movieTitle"
            placeholder="Movie Title">
-    <p>Description</p>
 
-    <input type="text"
-           id="movieDescription"
-           placeholder="Movie description">
+    <p>Description</p>
+    <textarea
+            id="movieDescription"
+            placeholder="Movie description"></textarea>
 
     <p>Genre</p>
     <select id="genreSelect">
@@ -37,7 +39,7 @@
     <input type="text"
            id="duration"
            placeholder="Movie Duration">
-    <button id="createMovieConfirmation">Create Movie</button>
+    <button id="createMovieConfirmation" class="confirmButton">Create Movie</button>
 </div>
 
 

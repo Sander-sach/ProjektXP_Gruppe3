@@ -36,6 +36,10 @@ public class MovieController {
         return movieService.deleteMovie(id);
     }
 
+    @PutMapping("/setInactive/{id}")
+    public Movie setInactiveMovie(@PathVariable Long id){
+        return movieService.setInactiveMovie(id);
+    }
 
     @GetMapping("/test")
     public String test() {

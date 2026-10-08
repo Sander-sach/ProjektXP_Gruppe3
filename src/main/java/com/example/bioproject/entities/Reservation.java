@@ -41,4 +41,21 @@ public class Reservation {
     public int getNumberOfPeople() {
         return numberOfPeople;
     }
+
+    public void setScreening(Screening screening) {
+        this.screening = screening;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setCustomerMobile(String customerMobile) {
+        this.customerMobile = customerMobile;
+    }
+
+    public void setNumberOfPeople(int numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
+    }
+
 }

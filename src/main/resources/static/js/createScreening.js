@@ -26,15 +26,15 @@ function populateMovies() {
         document.getElementById("movieSelection");
 
     allMovies.forEach(movie =>  {
+        if (movie.active===true) {
+            const option = document.createElement("option");
 
-        const option = document.createElement("option");
+            option.value = movie.id;
 
-        option.value = movie.id;
+            option.textContent = `${movie.movieTitle} (${movie.duration} min)`;
 
-        option.textContent = `${movie.movieTitle} (${movie.duration} min)`;
-
-        movieSelect.appendChild(option);
-
+            movieSelect.appendChild(option);
+        }
     });
 }
 

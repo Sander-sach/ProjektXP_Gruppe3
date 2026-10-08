@@ -61,4 +61,11 @@ public class MovieService {
     movieRepo.save(movie);
     return true;
     }
+
+    public Movie setInactiveMovie(Long id) {
+        Movie existingMovie = movieRepo.findById(id)
+                .orElseThrow();
+        existingMovie.setActive(false);
+        return movieRepo.save(existingMovie);
+    }
 }

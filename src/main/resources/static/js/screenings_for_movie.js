@@ -53,12 +53,21 @@ function displayScreenings(screenings) {
 
         theater.textContent = screening.theater.name;
 
+        // Reservation button
+        const reserveBtn = document.createElement("button");
+        reserveBtn.classList.add("reserve-btn");
+        reserveBtn.innerText = "Reserve seats";
+
+        reserveBtn.addEventListener("click", () => {
+            startReservationFlow(screening);
+        });
+
         screeningCard.appendChild(date);
         screeningCard.appendChild(time);
         screeningCard.appendChild(theater);
+        screeningCard.appendChild(reserveBtn);
 
         container.appendChild(screeningCard);
-
     });
 }
 
@@ -67,4 +76,11 @@ function displayWeek(){
 
     const week = document.createElement("div");
     week.classList.add("week");
+}
+
+//flow for reservation
+function startReservationFlow(screening) {
+    sessionStorage.setItem("selectedScreening", JSON.stringify(screening));
+    window.location.href = "/reservation.html";
+    ;
 }

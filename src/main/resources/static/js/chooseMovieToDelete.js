@@ -1,8 +1,9 @@
 import {loadAndPopulateGenres, loadMovies, loadScreenings} from "./loadDataFunctions.js";
 
-//This list always contains all movies. Instead we make temporary lists for filtering
 let allMovies = [];
 let allScreenings = [];
+let allGenres = [];
+
 
 // EventListeners - Automatically update when filters change
 document.getElementById("genreSelect")
@@ -12,16 +13,30 @@ document.getElementById("castSearch")
     .addEventListener("input", filterMovies);
 
 document.getElementById("date")
-    .addEventListener("change", filterMovies);
+    .addEventListener("change", filterMovies)
+
 
 initializePage();
 
+// Load initial data
+async function initializePage() {
 
-//Filtering by date becomes different to the movie filtering,
-// because it needs to filter the screenings and not the movies,
-// and if there are multiple criteria, then filter screenings in relation to the movies
+    try {
+        //Promise fails if any of the functions fail, then initialization doesnt work
+        //Error will be displayed in web console if fails
+        [allMovies, allScreenings] = await Promise.all([
+            loadMovies(),
+            loadScreenings(),
+            loadAndPopulateGenres()
+        ]);
 
-// Filter movies based on selected filters
+        filterMovies();
+
+    } catch (error) {
+        console.error("Failed to initialize page", error);
+    }
+}
+
 function filterMovies() {
 
     const selectedGenre =
@@ -55,13 +70,12 @@ function filterMovies() {
             })
 
         //Only returns movies where matchesGenre, matchesSearch and matchesDate are all true
-        return matchesGenre && matchesSearch && matchesDate  && movie.active===true;
+        return matchesGenre && matchesSearch && matchesDate && movie.active===true;
     });
 
     displayMovies(filteredMovies);
 }
 
-// Display movies in the grid
 function displayMovies(movies) {
 
     const movieGrid = document.getElementById("movieGrid");
@@ -84,34 +98,12 @@ function displayMovies(movies) {
 
         card.addEventListener("click", () => {
 
-            const movieScreening = allScreenings.filter(screening => screening.movie.id === movie.id);
+            sessionStorage.setItem("movie", JSON.stringify(movie));
 
-            sessionStorage.setItem("movieScreenings", JSON.stringify(movieScreening));
-
-            window.location.href = "screenings_for_movie.html?id=" + movie.id;
+            window.location.href = "delete_movie.html?id=" + movie.id;
 
         });
 
         movieGrid.appendChild(card);
     });
-}
-
-
-// Load initial data
-async function initializePage() {
-
-    try {
-        //Promise fails if any of the functions fail, then initialization doesnt work
-        //Error will be displayed in web console if fails
-        [allMovies, allScreenings] = await Promise.all([
-            loadMovies(),
-            loadScreenings(),
-            loadAndPopulateGenres()
-        ]);
-
-        filterMovies();
-
-    } catch (error) {
-        console.error("Failed to initialize page", error);
-    }
 }
