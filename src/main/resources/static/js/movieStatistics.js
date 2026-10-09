@@ -1,3 +1,5 @@
+import {loadMovies, loadScreenings, loadReservations, loadSeats} from "./loadDataFunctions.js";
+
 //These lists always contain all data. The statistics are calculated from them
 let allMovies = [];
 let allScreenings = [];
@@ -10,55 +12,7 @@ let allSeats = [];
 let lowOccupancy = 30;
 let highOccupancy = 70;
 
-// Fetch all movies from the API
-async function loadMovies() {
-
-    const response = await fetch("/api/movies");
-
-    if (!response.ok) {
-        throw new Error("Failed to load movies");
-    }
-
-    allMovies = await response.json();
-
-}
-
-async function loadScreenings() {
-
-    const response = await fetch("/api/screenings");
-
-    if (!response.ok) {
-        throw new Error("Failed to load screenings");
-    }
-
-    allScreenings = await response.json();
-
-}
-
-async function loadReservations() {
-
-    const response = await fetch("/api/reservations");
-
-    if (!response.ok) {
-        throw new Error("Failed to load reservations");
-    }
-
-    allReservations = await response.json();
-
-}
-
-async function loadSeats() {
-
-    const response = await fetch("/api/seats");
-
-    if (!response.ok) {
-        throw new Error("Failed to load seats");
-    }
-
-    allSeats = await response.json();
-
-}
-
+initializePage();
 
 // Calculate tickets sold and occupancy for every active movie
 // Occupancy = tickets sold / seats in all the movie's screenings
@@ -180,8 +134,6 @@ async function removeMovie(movie) {
     await initializePage();
 }
 
-
-
 // Change the limits when the film operator types a new value
 function changeLimits() {
 
@@ -211,7 +163,7 @@ async function initializePage() {
 
     try {
         //Promise fails if any of the functions fail, then initialization doesnt work
-        await Promise.all([
+        [allMovies, allScreenings, allReservations, allSeats] = await Promise.all([
             loadMovies(),
             loadScreenings(),
             loadReservations(),
@@ -225,4 +177,3 @@ async function initializePage() {
     }
 }
 
-initializePage();

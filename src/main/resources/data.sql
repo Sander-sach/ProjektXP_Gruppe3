@@ -198,5 +198,4 @@ VALUES
 INSERT INTO employee (user_name, password, role)
 VALUES ('Demo', '$2a$10$dnPbnAvRfSN8io/tUrfNNO5PpWNKcDxo68C5kMupxMJwXeOpmldHi', 'FILMOPERATOER'),
     ('Demo2', '$2a$10$ddlPF4vun87Asr55V/aKLexRRlQ0hGvOo.oA9Hfq/jxiZZU.1zNf.', 'SALG_RESEVATION'),
-    ('TestPerson','$2a$10$rRaJC9K79Cr1Eaq4TdXJlOhv82qKbWG0PyUV.kMpbkJMm4vp..mtG','FILMOPERATOER'),
-    ('admin','$2a$10$OUoxthdry6j9XelXdXwvxuFL2esH4SDg1ccaoRcNMMHb1w.lZNew2','ADMIN');
+    ('TestPerson','$2a$10$rRaJC9K79Cr1Eaq4TdXJlOhv82qKbWG0PyUV.kMpbkJMm4vp..mtG','FILMOPERATOER');
