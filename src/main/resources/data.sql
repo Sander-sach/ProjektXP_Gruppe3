@@ -196,4 +196,5 @@ VALUES
 
 
 INSERT INTO employee (user_name, password, role)
-VALUES ('Demo', '$2a$10$dnPbnAvRfSN8io/tUrfNNO5PpWNKcDxo68C5kMupxMJwXeOpmldHi', 'FILMOPERATOER');
+VALUES ('Demo', '$2a$10$dnPbnAvRfSN8io/tUrfNNO5PpWNKcDxo68C5kMupxMJwXeOpmldHi', 'FILMOPERATOER'),
+    ('Demo2', '$2a$10$ddlPF4vun87Asr55V/aKLexRRlQ0hGvOo.oA9Hfq/jxiZZU.1zNf.', 'SALG_RESEVATION');

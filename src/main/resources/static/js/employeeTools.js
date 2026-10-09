@@ -1,14 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const registerDialog = document.getElementById('registerDialog');
-
-
-    document.getElementById('registerBtn')
-        .addEventListener('click', () => registerDialog.showModal());
-    registerDialog.querySelector(".cancel-btn")
-        .addEventListener('click', () => registerDialog.close());
-});
+import { checkLogin, checkAdmin} from './auth.js';
 
 const registerForm = document.getElementById('register');
+const errorMessage = document.querySelector(".error-message");
+const registerDialog = document.getElementById('registerDialog');
+const user = await checkLogin();
+if(!user) throw new Error("Not Authenticated");
+
+document.getElementById("registerBtn").hidden = !checkAdmin(user);
+document.getElementById('registerBtn')
+    .addEventListener('click', () => registerDialog.showModal());
+    registerDialog.querySelector(".cancel-btn")
+        .addEventListener('click', () => registerDialog.close());
+
 
 
 registerForm.addEventListener('submit', async (event) => {
@@ -29,5 +32,7 @@ registerForm.addEventListener('submit', async (event) => {
         registerForm.reset();
     } else {
         console.error('Registration failed:', response.status);
+        errorMessage.textContent = "You dont have access to use this tool";
+        errorMessage.hidden = false;
     }
 });

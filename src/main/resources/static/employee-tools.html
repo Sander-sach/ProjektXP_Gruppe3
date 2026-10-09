@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Employee Tools</title>
     <link rel="stylesheet" href="/css/general.css">
     <script type=module src="/js/employeeTools.js"></script>
 </head>
@@ -22,7 +22,7 @@
         Edit Movies
     </a>
     <div id="login-buttons">
-        <button id="registerBtn">Opret ny Bruger</button>
+        <button id="registerBtn" hidden>Opret ny Bruger</button>
     </div>
 </div>
 
@@ -45,6 +45,7 @@
                     <button type="button" class="cancel-btn">Annuller</button>
                     <button type="submit">Register</button>
                 </menu>
+                <p class="error-message" hidden></p>
             </form>
         </div>
     </dialog>
