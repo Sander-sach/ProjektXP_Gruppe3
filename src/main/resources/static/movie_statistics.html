@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Movie Statistics</title>
-  <link rel="stylesheet" href="/css/general.css">
   <link rel="stylesheet" href="/css/movieStatistics.css">
-  <script type=module src="/js/movieStatistics.js"></script>
 </head>
 <body>
 
-<a href="/" class="back-link">&larr; Back to front page</a>
+<a href="/screening_dashboard.html" class="back-link">&larr; Back to screening dashboard</a>
 
 <h1>Movie Statistics</h1>
 <p class="description">
@@ -18,8 +16,8 @@
 </p>
 
 <section class="legend">
-  <p><span class="status-low">Low</span> under 30 % &ndash; consider removing the movie</p>
-  <p><span class="status-high">High</span> 70 % or more &ndash; consider extra screenings</p>
+  <p><span class="status-low">Low</span> under <input type="number" id="lowInput" min="0" max="100"> % &ndash; consider removing the movie</p>
+  <p><span class="status-high">High</span> <input type="number" id="highInput" min="0" max="100"> % or more &ndash; consider extra screenings</p>
 </section>
 
 <table class="statistics-table">
@@ -36,6 +34,8 @@
   <tbody id="statisticsBody">
   </tbody>
 </table>
+
+<script src="/js/movieStatistics.js"></script>
 
 </body>
 </html>

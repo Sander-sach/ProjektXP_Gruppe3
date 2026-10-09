@@ -1,16 +1,63 @@
-import {loadMovies, loadScreenings, loadReservations, loadSeats} from "./loadDataFunctions.js";
-
 //These lists always contain all data. The statistics are calculated from them
 let allMovies = [];
 let allScreenings = [];
 let allReservations = [];
 let allSeats = [];
 
-//Occupancy under LOW_OCCUPANCY = the movie does not attract enough viewers
-//Occupancy over HIGH_OCCUPANCY = plan extra screenings
-const LOW_OCCUPANCY = 30;
-const HIGH_OCCUPANCY = 70;
+//Occupancy under lowOccupancy = the movie does not attract enough viewers
+//Occupancy over highOccupancy = plan extra screenings
+//The film operator can change them in the input fields on the page
+let lowOccupancy = 30;
+let highOccupancy = 70;
 
+// Fetch all movies from the API
+async function loadMovies() {
+
+    const response = await fetch("/api/movies");
+
+    if (!response.ok) {
+        throw new Error("Failed to load movies");
+    }
+
+    allMovies = await response.json();
+
+}
+
+async function loadScreenings() {
+
+    const response = await fetch("/api/screenings");
+
+    if (!response.ok) {
+        throw new Error("Failed to load screenings");
+    }
+
+    allScreenings = await response.json();
+
+}
+
+async function loadReservations() {
+
+    const response = await fetch("/api/reservations");
+
+    if (!response.ok) {
+        throw new Error("Failed to load reservations");
+    }
+
+    allReservations = await response.json();
+
+}
+
+async function loadSeats() {
+
+    const response = await fetch("/api/seats");
+
+    if (!response.ok) {
+        throw new Error("Failed to load seats");
+    }
+
+    allSeats = await response.json();
+
+}
 
 
 // Calculate tickets sold and occupancy for every active movie
@@ -59,11 +106,11 @@ function calculateStatistics() {
 
 function getStatus(occupancy) {
 
-    if (occupancy < LOW_OCCUPANCY) {
+    if (occupancy < lowOccupancy) {
         return "Low";
     }
 
-    if (occupancy >= HIGH_OCCUPANCY) {
+    if (occupancy >= highOccupancy) {
         return "High";
     }
 
@@ -135,18 +182,41 @@ async function removeMovie(movie) {
 
 
 
+// Change the limits when the film operator types a new value
+function changeLimits() {
+
+    const newLow = Number(document.getElementById("lowInput").value);
+    const newHigh = Number(document.getElementById("highInput").value);
+
+    //Low must be under high, otherwise the change is ignored
+    if (newLow >= newHigh) {
+        return;
+    }
+
+    lowOccupancy = newLow;
+    highOccupancy = newHigh;
+
+    displayStatistics(calculateStatistics());
+}
+
+document.getElementById("lowInput").value = lowOccupancy;
+document.getElementById("highInput").value = highOccupancy;
+document.getElementById("lowInput").addEventListener("input", changeLimits);
+document.getElementById("highInput").addEventListener("input", changeLimits);
+
+
+
 // Load initial data
 async function initializePage() {
 
     try {
         //Promise fails if any of the functions fail, then initialization doesnt work
-        [allMovies, allScreenings, allReservations, allSeats] = await Promise.all([
+        await Promise.all([
             loadMovies(),
             loadScreenings(),
             loadReservations(),
             loadSeats()
         ]);
-
 
         displayStatistics(calculateStatistics());
 
