@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Tools</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <script type=module src="/js/employeeTools.js"></script>
+</head>
+
+<body>
+<div class="nav-bar" id="homePageNavBar">
+    <a href="/movie_overview.html" class="nav-button">
+        Movie Overview
+    </a>
+    <a href="/screening_dashboard.html" class="nav-button">
+        Screening Dashboard
+    </a>
+    <a href="/movie_statistics.html" class="nav-button">
+        Movie Statistics
+    </a>
+    <a href="/movie_settings.html" class="nav-button">
+        Edit Movies
+    </a>
+    <a href="/reservation_overview.html" class="nav-button">
+        See screenings
+    </a>
+
+    <div id="login-buttons">
+        <button id="registerBtn" hidden>Opret ny Bruger</button>
+    </div>
+</div>
+
+<div class="form-box">
+    <dialog id="registerDialog">
+        <div class="form-group">
+            <form method="dialog" id="register">
+                <h2>Bruger oprettelse</h2>
+                <label for="registerUserName">Brugernavn</label>
+                <input type="text" id="registerUserName" name="registerUserName" required>
+                <label for="registerPassword">Adgangskode</label>
+                <input type="password" id="registerPassword" name="registerPassword" required>
+                <label for="role">Medarbejder rolle </label>
+                <select id="role" name="role" required>
+                    <option value="">Vælge en rolle</option>
+                    <option value="FILMOPERATOER">Filmoperatør</option>
+                    <option value="SALG_RESEVATION">Salg og Resevation</option>
+                </select>
+                <menu>
+                    <button type="button" class="cancel-btn">Annuller</button>
+                    <button type="submit">Register</button>
+                </menu>
+                <p class="error-message" hidden></p>
+            </form>
+        </div>
+    </dialog>
+</div>
+</body>
+</html>

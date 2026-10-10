@@ -1,125 +1,47 @@
-/** {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}*/
-
-/* ── Colors ── */
-
-:root {
-    --navy:   #1a2140;
-    --purple: #7b3f9e;
-    --white:  #ffffff;
-    --gray:   #f1f3f7;
-    --border: #e2e6ef;
-    --text:   #1a2140;
-    --muted:  #6b7490;
-}
-
-
-/* ── Body ── */
-/*
 body {
-    font-family: Arial, sans-serif;
-    background: var(--gray);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
 }
-*/
 
-
-/* Pop-up box */
-.form-box {
+.login-card {
+    background-color: #202936;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 40px;
     width: 100%;
-    max-width: 380px;
+    max-width: 360px;
 }
 
-.form-box h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    color: var(--text);
+.login-card h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 22px;
+    text-align: center;
 }
 
-/* ── Form elements ── */
-.form-group {
-    margin-bottom: 1.2rem;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--muted);
-    margin-bottom: 0.4rem;
-}
-
-.form-group input,
-.form-group select {
-    width: 90%;
-    padding: 0.7rem 1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    outline: none;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: var(--purple);
-}
-
-#login-buttons {
-    margin-left: auto;
-    display: flex;
-    gap: 10px;
-}
-
-/*
-!* ── Split layout (index page) ── *!
-.split-layout {
-    display: flex;
-    min-height: 100vh;
-}
-
-.split-left {
-    flex: 1;
-    background: #111a27;
+.login-card form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 3rem;
-    color: var(--white);
-    background-image: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 20px,
-            rgba(255,255,255,0.03) 20px,
-            rgba(255,255,255,0.03) 21px
-    );
+    gap: 15px;
 }
 
-.split-left h1 {
-    margin-bottom: 1rem;
-    font-weight: 700;
-    letter-spacing: -2px;
-    font-size: 3.5rem;
-    text-shadow: 0px 4px 20px rgba(100, 120, 200, 0.6);
+.login-card label {
+    font-size: 14px;
+    color: lightgray;
 }
 
-.split-left p {
-    color: #9aa3b5;
-    font-style: italic;
+.login-card button {
+    margin-top: 10px;
+    padding: 12px;
 }
 
-.split-right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--white);
-    padding: 3rem;
+.error-message {
+    color: #ff6b6b;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
 }
-*/
