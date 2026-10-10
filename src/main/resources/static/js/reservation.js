@@ -37,10 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(reservation)
             });
 
-            console.log("Response:", response);
+            if (!response.ok) {
+                throw new Error("Failed to create reservation");
+            }
+
+            alert("Reservation confirmed!");
 
         } catch (err) {
             console.error("Error:", err);
+            alert("Something went wrong while creating the reservation.");
         }
+
     });
 });
